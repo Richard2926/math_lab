@@ -89,6 +89,20 @@ export default function Admin() {
         return index + slot_index;
     }
 
+    const noPreference = (day_index, options) => {
+      let index = 0;
+        for (var i = 0; i < day_index; i++) {
+            index = index + room.slots[i].slots.length;
+        }
+        let pref = 0;
+
+        for (var j = 0; j < room.slots[day_index].slots.length; j++) {
+          pref = pref + options[index + j];
+        }
+        
+        return pref === 0;
+    }
+
     return initial || loading ? (
       <div />
     ) : (
@@ -111,9 +125,12 @@ export default function Admin() {
           <Box w="55%" bg="blue.200" borderRadius={"5"}>
             <Center m="2">
               <Text>
-                Link for users/students: {' '}
-                <Link color="teal.500" href={"https://gt-math-lab.web.app/rooms/" + room.room_id}>
-                    https://gt-math-lab.web.app/rooms/{room.room_id}
+                Link for users/students:{" "}
+                <Link
+                  color="teal.500"
+                  href={"https://gt-math-lab.web.app/rooms/" + room.room_id}
+                >
+                  https://gt-math-lab.web.app/rooms/{room.room_id}
                 </Link>
               </Text>
             </Center>
@@ -169,12 +186,20 @@ export default function Admin() {
               <Flex w="55%">
                 <Text>
                   {student.name}'s Preferences: (Needed Hours:{" "}
-                  {student.units_needed/2})
+                  {student.units_needed / 2})
                 </Text>
                 <Spacer />
               </Flex>
               {room.slots.map((day) => (
-                <Center key={day.day} w="55%">
+                <Center
+                  key={day.day}
+                  w="55%"
+                  display={
+                    noPreference(room.slots.indexOf(day), student.options)
+                      ? "none"
+                      : "display"
+                  }
+                >
                   <VStack w="full">
                     {day.slots.map((slot) => (
                       <Flex
