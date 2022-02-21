@@ -220,7 +220,7 @@ exports.generate_schedule = functions.https.onRequest(
           vars: temp_slot_constraints,
           bnds: {
             type: glpk.GLP_DB,
-            ub: 4,
+            ub: 5,
             lb: 1,
           },
         });
