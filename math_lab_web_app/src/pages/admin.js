@@ -185,7 +185,7 @@ export default function Admin() {
             <VStack w="full" pb="2">
               <Flex w="55%">
                 <Text>
-                  {student.name}'s Preferences: (Needed Hours:{" "}
+                  {student.name}'s Choices: (Needed Hours:{" "}
                   {student.units_needed / 2})
                 </Text>
                 <Spacer />
@@ -217,14 +217,14 @@ export default function Admin() {
                         }
                       >
                         <Text fontSize={"sm"} pl="4">
-                          {day.day}: {slot}, Preference Level:{" "}
-                          {5 *
+                          {day.day}: {slot}, Choice No:{" "}
+                          {6 - (5 *
                             student.options[
                               index(
                                 room.slots.indexOf(day),
                                 day.slots.indexOf(slot)
                               )
-                            ]}
+                            ])}
                         </Text>
                       </Flex>
                     ))}

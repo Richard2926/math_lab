@@ -143,12 +143,12 @@ export default function Form() {
                       )
                     }
                   >
-                    <option value={0}>No/Least Preference</option>
-                    <option value={0.2}>Preference Level 1</option>
-                    <option value={0.4}>Preference Level 2</option>
-                    <option value={0.6}>Preference Level 3</option>
-                    <option value={0.8}>Preference Level 4</option>
-                    <option value={1}>Preference Level 5 (Max)</option>
+                    <option value={0}>- - No Choice - -</option>
+                    <option value={1}>First Choice</option>
+                    <option value={0.8}>Second Choice</option>
+                    <option value={0.6}>Third Choice</option>
+                    <option value={0.4}>Fourth Choice</option>
+                    <option value={0.2}>Fifth Choice</option>
                   </Select>
                 </Flex>
               ))}
